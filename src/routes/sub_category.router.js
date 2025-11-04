@@ -24,4 +24,11 @@ SubCategoryRouter.get(
   GetSubCategory
 );
 
+
+
+SubCategoryRouter.get(
+  "/category/:categoryId",
+  GetSubCategory
+);
+
 export default SubCategoryRouter;

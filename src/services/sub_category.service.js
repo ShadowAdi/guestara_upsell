@@ -38,6 +38,26 @@ export const getAllSubCategory = async () => {
   }
 };
 
+export const getAllSubCategoryBasedOnCategoryId = async (categoryId) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(categoryId)) {
+      throw new AppError("Invalid category ID format", 400);
+    }
+
+    const subCategories = await sub_categorySchema
+      .find({ category_id: categoryId })
+      .populate("category_id", "name image");
+
+    return subCategories;
+  } catch (error) {
+    console.error("Failed to get subcategories:", error);
+    logger.error("Failed to get subcategories: " + error);
+    throw new AppError(`Failed to get subcategories: ${error.message}`, 500);
+  }
+};
+
+
+
 export const getSubCategoryByIdOrNameService = async (identifier) => {
   try {
     let query = {};
