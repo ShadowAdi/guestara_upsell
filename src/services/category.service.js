@@ -34,7 +34,7 @@ export const isCategoryExistsService = async (name) => {
 
 export const GetAllCategoryService = async () => {
   try {
-    const getAllCategory = await CategorySchema.find();
+    const getAllCategory = await CategorySchema.find().populate("category_id","name image");
     return getAllCategory;
   } catch (error) {
     logger.error(`Failed to get all category: ${error}`);

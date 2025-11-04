@@ -27,11 +27,38 @@ export const createSubCategoryService = async (data) => {
 
 export const getAllSubCategory = async () => {
   try {
-    const getAllSubCategory = await sub_categorySchema.find();
+    const getAllSubCategory = await sub_categorySchema
+      .find()
+      .populate("category_id", "name image");
     return getAllSubCategory;
   } catch (error) {
     console.error("Failed to get all sub-category:", error);
     logger.error("Failed to get all subcategory " + error);
     throw new AppError(`Failed to get all sub-category: ${error.message}`, 500);
+  }
+};
+
+export const getSubCategoryByIdOrNameService = async (identifier) => {
+  try {
+    let query = {};
+
+    if (/^[0-9a-fA-F]{24}$/.test(identifier)) {
+      query = { _id: identifier };
+    } else {
+      query = { name: identifier.toLowerCase() };
+    }
+
+    const subCategory = await sub_categorySchema
+      .findOne(query)
+      .populate("category_id", "name image");
+
+    if (!subCategory) {
+      throw new AppError("Sub Category not found", 404);
+    }
+
+    return subCategory;
+  } catch (error) {
+    console.error("Failed to get sub category:", error);
+    throw new AppError(`Failed to get sub category: ${error.message}`, 500);
   }
 };
