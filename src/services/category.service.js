@@ -2,7 +2,7 @@ import { logger } from "../config/logger.config";
 import CategorySchema from "../models/Category.schema";
 import { AppError } from "../utils/AppError";
 
-export const CreateCategory = async (categoryData) => {
+export const CreateCategoryService = async (categoryData) => {
   try {
     const newCategory = new CategorySchema({
       name: categoryData.name,
