@@ -1,3 +1,4 @@
+import { logger } from "../config/logger.config";
 import sub_categorySchema from "../models/sub_category.schema";
 import { AppError } from "../utils/AppError";
 
@@ -21,5 +22,16 @@ export const createSubCategoryService = async (data) => {
   } catch (error) {
     console.error("Failed to create sub-category:", error);
     throw new AppError(`Failed to create sub-category: ${error.message}`, 500);
+  }
+};
+
+export const getAllSubCategory = async () => {
+  try {
+    const getAllSubCategory = await sub_categorySchema.find();
+    return getAllSubCategory;
+  } catch (error) {
+    console.error("Failed to get all sub-category:", error);
+    logger.error("Failed to get all subcategory " + error);
+    throw new AppError(`Failed to get all sub-category: ${error.message}`, 500);
   }
 };
