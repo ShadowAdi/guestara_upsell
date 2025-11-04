@@ -20,3 +20,14 @@ export const CreateCategoryService = async (categoryData) => {
     throw new AppError(`Failed to create user: ${error}`, 500);
   }
 };
+
+export const isCategoryExistsService = async (name) => {
+  try {
+    const isCategoryExists = await CategorySchema.exists({ name: name });
+    return isCategoryExists;
+  } catch (error) {
+    logger.error(`Failed to get category: ${error}`);
+    console.error(`Failed to get category: `, error);
+    throw new AppError(`Failed to get category: ${error}`, 500);
+  }
+};
