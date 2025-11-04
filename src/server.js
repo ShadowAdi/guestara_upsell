@@ -4,6 +4,7 @@ import { CorsConfig } from "./config/corsConfig.js";
 import { CustomErrorHandler } from "./middlewares/ErrorHandler.js";
 import { AppConnect } from "./config/AppConfig.js";
 import CategoryRouter from "./routes/category.router.js";
+import SubCategoryRouter from "./routes/sub_category.router.js";
 
 const app = express();
 
@@ -11,6 +12,7 @@ CorsConfig(app);
 app.use(express.json());
 
 app.use("/api/categories", CategoryRouter);
+app.use("/api/sub-categories", SubCategoryRouter);
 
 app.use(CustomErrorHandler);
 

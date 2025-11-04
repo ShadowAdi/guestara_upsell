@@ -5,8 +5,8 @@ import {
 import { CustomTryCatch } from "../utils/CustomTryCatch";
 
 export const CreateCategory = CustomTryCatch(async (request, response) => {
-  const userData = request.body;
-  const createdCategory = await CreateCategoryService(userData);
+  const categoryData = request.body;
+  const createdCategory = await CreateCategoryService(categoryData);
   return response.status(201).json({
     success: true,
     message: "Category Created successfully.",
