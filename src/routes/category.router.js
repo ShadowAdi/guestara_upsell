@@ -16,6 +16,6 @@ CategoryRouter.post(
   CreateCategory
 );
 CategoryRouter.get("/", GetAllCategory);
-CategoryRouter.get("/category", GetCategory);
+CategoryRouter.get("/category/:identifier", GetCategory);
 
 export default CategoryRouter;
