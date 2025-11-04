@@ -21,3 +21,14 @@ export const GetAllCategory = CustomTryCatch(async (request, response) => {
     data: getAllCategory,
   });
 });
+
+export const GetCategory = CustomTryCatch(async (request, response) => {
+  const { identifier } = req.params;
+  const category = await getCategoryByIdOrNameService(identifier);
+
+  res.status(200).json({
+    success: true,
+    message: "Category fetched successfully",
+    data: category,
+  });
+});

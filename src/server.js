@@ -10,7 +10,7 @@ const app = express();
 CorsConfig(app);
 app.use(express.json());
 
-app.use("/api/category", CategoryRouter);
+app.use("/api/categories", CategoryRouter);
 
 app.use(CustomErrorHandler);
 
