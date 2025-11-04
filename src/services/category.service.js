@@ -31,3 +31,14 @@ export const isCategoryExistsService = async (name) => {
     throw new AppError(`Failed to get category: ${error}`, 500);
   }
 };
+
+export const GetAllCategoryService = async () => {
+  try {
+    const getAllCategory = await CategorySchema.find();
+    return getAllCategory;
+  } catch (error) {
+    logger.error(`Failed to get all category: ${error}`);
+    console.error(`Failed to get all category: `, error);
+    throw new AppError(`Failed to get all category: ${error}`, 500);
+  }
+};
