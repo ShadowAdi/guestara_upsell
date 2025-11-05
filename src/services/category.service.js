@@ -34,7 +34,10 @@ export const isCategoryExistsService = async (name) => {
 
 export const GetAllCategoryService = async () => {
   try {
-    const getAllCategory = await CategorySchema.find().populate("category_id","name image");
+    const getAllCategory = await CategorySchema.find().populate(
+      "category_id",
+      "name image"
+    );
     return getAllCategory;
   } catch (error) {
     logger.error(`Failed to get all category: ${error}`);
@@ -63,5 +66,20 @@ export const getCategoryByIdOrNameService = async (identifier) => {
   } catch (error) {
     console.error("Failed to get category:", error);
     throw new AppError(`Failed to get category: ${error.message}`, 500);
+  }
+};
+
+export const updateCategoryService = async (categoryId, data) => {
+  try {
+    const updatedCategory = await CategorySchema.findByIdAndUpdate(
+      categoryId,
+      data,
+      { new: true }
+    );
+
+    return updatedCategory;
+  } catch (error) {
+    logger.error("Failed to update category: " + error);
+    throw new AppError(`Failed to update category: ${error.message}`, 500);
   }
 };

@@ -82,3 +82,20 @@ export const getSubCategoryByIdOrNameService = async (identifier) => {
     throw new AppError(`Failed to get sub category: ${error.message}`, 500);
   }
 };
+
+
+export const updateSubCategoryService = async (subCategoryId, data) => {
+  try {
+
+    const updatedSubCategory = await sub_categorySchema.findByIdAndUpdate(
+      subCategoryId,
+      data,
+      { new: true }
+    );
+
+    return updatedSubCategory;
+  } catch (error) {
+    logger.error("Failed to update sub-category: " + error);
+    throw new AppError(`Failed to update sub-category: ${error.message}`, 500);
+  }
+};
