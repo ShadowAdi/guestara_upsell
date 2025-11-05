@@ -5,6 +5,7 @@ import {
   getAllSubCategory,
   getAllSubCategoryBasedOnCategoryId,
   getSubCategoryByIdOrNameService,
+  updateSubCategoryService,
 } from "../services/sub_category.service";
 import { AppError } from "../utils/AppError";
 import { CustomTryCatch } from "../utils/CustomTryCatch";
@@ -28,7 +29,7 @@ export const GetAllSubCategory = CustomTryCatch(async (request, response) => {
 });
 
 export const GetSubcategory = CustomTryCatch(async (request, response) => {
-  const { identifier } = req.params;
+  const { identifier } = request.params;
 
   const subCategory = await getSubCategoryByIdOrNameService(identifier);
   return response.status(200).json({
@@ -39,7 +40,7 @@ export const GetSubcategory = CustomTryCatch(async (request, response) => {
 
 export const GetSubCategoryBasedOnCategoryId = CustomTryCatch(
   async (request, response) => {
-    const { categoryId } = req.params;
+    const { categoryId } = request.params;
     const parentCategoryFound = await getCategoryByIdOrNameService(categoryId);
     if (!parentCategoryFound) {
       logger.error("Failed to get the parent category");
@@ -48,10 +49,25 @@ export const GetSubCategoryBasedOnCategoryId = CustomTryCatch(
 
     const subCategories = await getAllSubCategoryBasedOnCategoryId(categoryId);
 
-    res.status(200).json({
+    response.status(200).json({
       success: true,
       message: "Sub Category fetched successfully",
       data: subCategories,
     });
   }
 );
+
+
+
+export const UpdateSubCategory = CustomTryCatch(async (req, res) => {
+  const { subCategoryId } = req.params;
+  const { data } = req.body;
+
+  const subCategory = await updateSubCategoryService(subCategoryId, data);
+
+  res.status(200).json({
+    success: true,
+    message: "Sub Category updated successfully",
+    data: subCategory,
+  });
+});
