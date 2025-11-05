@@ -11,7 +11,7 @@ export const EditItemValidator = () => {
       .isMongoId()
       .withMessage("Invalid item ID")
       .custom(async (id) => {
-        const item = await getItemByIdService(id);
+        const item = await getItemByIdOrNameService(id);
         if (!item) {
           logger.error("Item not found for update");
           throw new AppError("Item not found", 404);

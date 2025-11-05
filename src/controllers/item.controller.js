@@ -66,15 +66,9 @@ export const GetItemBySubCategoryId = CustomTryCatch(async (req, res) => {
 
 export const UpdateItem = CustomTryCatch(async (req, res) => {
   const { itemId } = req.params;
-  const { data } = req.body;
+const updateData = req.body;
 
-  const isItemExist=await getItemByIdOrNameService(itemId)
-  if (!isItemExist) {
-    logger.error("Failed to get the item")
-    throw new AppError("Failed to get the item",500)
-  }
-
-  const items = await updateItemService(itemId, data);
+  const items = await updateItemService(itemId, updateData);
 
   res.status(200).json({
     success: true,

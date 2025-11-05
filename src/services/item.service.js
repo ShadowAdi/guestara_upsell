@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { logger } from "../config/logger.config.js";
 import CategorySchema from "../models/Category.schema.js";
 import itemSchema from "../models/item.schema.js";
@@ -115,7 +116,7 @@ export const getItemByIdOrNameService = async (identifier) => {
       throw new AppError("Item not found", 404);
     }
 
-    return subCategory;
+    return item;
   } catch (error) {
     console.error("Failed to get item:", error);
     throw new AppError(`Failed to get item: ${error.message}`, 500);
@@ -124,7 +125,7 @@ export const getItemByIdOrNameService = async (identifier) => {
 
 export const getAllItemsBasedOnCategoryId = async (categoryId) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(itemId)) {
+    if (!mongoose.Types.ObjectId.isValid(categoryId)) {
       throw new AppError("Invalid categoryId format", 400);
     }
 
@@ -156,15 +157,18 @@ export const getAllItemsBasedOnSubCategoryId = async (subCategoryId) => {
 
 export const updateItemService = async (itemId, data) => {
   try {
+
     if (data.base_amount !== undefined || data.discount !== undefined) {
       const base = data.base_amount ?? existingItem.base_amount;
       const discount = data.discount ?? existingItem.discount ?? 0;
       data.total_amount = base - discount;
     }
 
-    const updatedItem = await itemSchema.findByIdAndUpdate(itemId, data, {
-      new: true,
-    });
+    const updatedItem = await itemSchema.findByIdAndUpdate(
+      itemId,
+      { $set: data },
+      { new: true, runValidators: true }
+    );
 
     return updatedItem;
   } catch (error) {

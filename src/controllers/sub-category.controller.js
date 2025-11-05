@@ -61,9 +61,9 @@ export const GetSubCategoryBasedOnCategoryId = CustomTryCatch(
 
 export const UpdateSubCategory = CustomTryCatch(async (req, res) => {
   const { subCategoryId } = req.params;
-  const { data } = req.body;
+  const updateSubCategory = req.body;
 
-  const subCategory = await updateSubCategoryService(subCategoryId, data);
+  const subCategory = await updateSubCategoryService(subCategoryId, updateSubCategory);
 
   res.status(200).json({
     success: true,

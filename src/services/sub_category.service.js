@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { logger } from "../config/logger.config.js";
 import sub_categorySchema from "../models/sub_category.schema.js";
 import { AppError } from "../utils/AppError.js";
@@ -45,7 +46,7 @@ export const getAllSubCategoryBasedOnCategoryId = async (categoryId) => {
     }
 
     const subCategories = await sub_categorySchema
-      .find({ category_id: categoryId })
+      .find({ category_id:categoryId })
       .populate("category_id", "name image");
 
     return subCategories;
