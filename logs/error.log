@@ -1,9 +1,0 @@
-2025-11-05 12:39:47 [ERROR]: Failed to get the error the status code is error and the message is response is not defined
-2025-11-05 12:39:47 [ERROR]: UNHANDLED ERROR  response is not defined
-2025-11-05 12:46:10 [ERROR]: Failed to get the error the status code is fail and the message is isCategoryExistsService is not defined
-2025-11-05 12:46:52 [ERROR]: Failed to get all category: StrictPopulateError: Cannot populate path `category_id` because it is not in your schema. Set the `strictPopulate` option to false to override.
-2025-11-05 12:46:52 [ERROR]: Failed to get the error the status code is error and the message is Failed to get all category: StrictPopulateError: Cannot populate path `category_id` because it is not in your schema. Set the `strictPopulate` option to false to override.
-2025-11-05 12:48:32 [ERROR]: Failed to get the error the status code is error and the message is getCategoryByIdOrNameService is not defined
-2025-11-05 12:48:32 [ERROR]: UNHANDLED ERROR  getCategoryByIdOrNameService is not defined
-2025-11-05 12:50:25 [ERROR]: Failed to get the error the status code is 400 and the message is Expected double-quoted property name in JSON at position 44 (line 4 column 1)
-2025-11-05 12:50:25 [ERROR]: UNHANDLED ERROR  Expected double-quoted property name in JSON at position 44 (line 4 column 1)

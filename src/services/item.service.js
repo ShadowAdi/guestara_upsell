@@ -106,7 +106,7 @@ export const getItemByIdOrNameService = async (identifier) => {
     if (/^[0-9a-fA-F]{24}$/.test(identifier)) {
       query = { _id: identifier };
     } else {
-      query = { name: identifier.toLowerCase() };
+      query = { name: identifier };
     }
 
     const item = await itemSchema.findOne(query);

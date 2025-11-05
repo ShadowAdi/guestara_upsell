@@ -65,7 +65,7 @@ export const getSubCategoryByIdOrNameService = async (identifier) => {
     if (/^[0-9a-fA-F]{24}$/.test(identifier)) {
       query = { _id: identifier };
     } else {
-      query = { name: identifier.toLowerCase() };
+      query = { name: identifier };
     }
 
     const subCategory = await sub_categorySchema
