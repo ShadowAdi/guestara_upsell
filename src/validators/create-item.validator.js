@@ -1,6 +1,9 @@
 import { body } from "express-validator";
 import { getCategoryByIdOrNameService } from "../services/category.service";
 import { getSubCategoryByIdOrNameService } from "../services/sub_category.service";
+import { isItemExistsService } from "../services/item.service";
+import { logger } from "../config/logger.config";
+import { AppError } from "../utils/AppError";
 
 export function CreateItemValidator() {
   return [
@@ -9,7 +12,16 @@ export function CreateItemValidator() {
       .notEmpty()
       .withMessage("Name is required")
       .isLength({ min: 3 })
-      .withMessage("Name must be at least 3 characters long"),
+      .withMessage("Name must be at least 3 characters long")
+      .custom(async (name) => {
+        const itemAlreadyExists = await isItemExistsService(name);
+        if (itemAlreadyExists) {
+          logger.error("Failed to get the Item");
+          console.error("Failed to get the Item");
+          throw new AppError("Failed to get the Item", 400);
+        }
+        return true;
+      }),
 
     body("image").optional().isURL().withMessage("Image must be a valid URL"),
 
