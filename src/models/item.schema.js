@@ -47,11 +47,4 @@ const itemSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-itemSchema.pre("save", function (next) {
-  if (!this.total_amount) {
-    this.total_amount = this.base_amount - (this.discount || 0);
-  }
-  next();
-});
-
 export default mongoose.model("Item", itemSchema);
