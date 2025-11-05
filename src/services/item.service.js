@@ -1,4 +1,8 @@
+import { logger } from "../config/logger.config";
+import CategorySchema from "../models/Category.schema";
 import itemSchema from "../models/item.schema";
+import sub_categorySchema from "../models/sub_category.schema";
+import { AppError } from "../utils/AppError";
 
 export const isItemExistsService = async (name) => {
   try {
@@ -33,7 +37,7 @@ export const createItemService = async (data) => {
     let finalTax = tax;
 
     if (sub_category_id) {
-      const subCat = await SubCategory.findById(sub_category_id).populate("category_id");
+      const subCat = await sub_categorySchema.findById(sub_category_id).populate("category_id");
       if (!subCat) throw new AppError("Sub-category not found", 404);
 
       if (finalTaxApplicable === undefined || finalTaxApplicable === null)
@@ -42,7 +46,7 @@ export const createItemService = async (data) => {
       if (finalTax === undefined || finalTax === null)
         finalTax = subCat.tax ?? subCat.category_id?.tax ?? 0;
     } else if (category_id) {
-      const cat = await Category.findById(category_id);
+      const cat = await CategorySchema.findById(category_id);
       if (!cat) throw new AppError("Category not found", 404);
 
       if (finalTaxApplicable === undefined || finalTaxApplicable === null)
@@ -54,7 +58,7 @@ export const createItemService = async (data) => {
 
     const total_amount = base_amount - (discount || 0);
 
-    const newItem = await Item.create({
+    const newItem = await itemSchema.create({
       category_id,
       sub_category_id,
       name,
