@@ -1,8 +1,8 @@
-import "./config/DotEnvConfig.js";
+import "./config/Dotenv.config.js";
 import express from "express";
-import { CorsConfig } from "./config/corsConfig.js";
-import { CustomErrorHandler } from "./middlewares/ErrorHandler.js";
-import { AppConnect } from "./config/AppConfig.js";
+import { CorsConfig } from "./config/Cors.config.js";
+import { CustomErrorHandler } from "./middlewares/ErrorMiddleware.js";
+import { AppConnect } from "./config/app.config.js";
 import CategoryRouter from "./routes/category.router.js";
 import SubCategoryRouter from "./routes/sub_category.router.js";
 import ItemRouter from "./routes/item.router.js";

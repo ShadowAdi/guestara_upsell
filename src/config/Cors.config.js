@@ -1,5 +1,5 @@
 import cors from "cors";
-import { logger } from "./logger.config";
+import { logger } from "./logger.config.js";
 
 const allowedOrigins = [
   "http://localhost:5173",
