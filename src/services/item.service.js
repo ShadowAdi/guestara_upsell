@@ -123,11 +123,29 @@ export const getItemByIdOrNameService = async (identifier) => {
 export const getAllItemsBasedOnCategoryId = async (categoryId) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(itemId)) {
-      throw new AppError("Invalid Item ID format", 400);
+      throw new AppError("Invalid categoryId format", 400);
     }
 
     const items = await itemSchema
       .find({ category_id:categoryId })
+
+    return items;
+  } catch (error) {
+    console.error("Failed to get items:", error);
+    logger.error("Failed to get items: " + error);
+    throw new AppError(`Failed to get items: ${error.message}`, 500);
+  }
+};
+
+
+export const getAllItemsBasedOnSubCategoryId = async (subCategoryId) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(subCategoryId)) {
+      throw new AppError("Invalid sub CategoryId ID format", 400);
+    }
+
+    const items = await itemSchema
+      .find({ subcategory_id:subCategoryId })
 
     return items;
   } catch (error) {
