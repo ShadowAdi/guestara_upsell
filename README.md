@@ -91,6 +91,18 @@ npm start
 Server will start at:
 👉 http://localhost:8080
 
+## 🚀 Deployment
+
+This project is ready for deployment on Vercel. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ShadowAdi/guestara_upsell)
+
+**Required Environment Variables:**
+- `MONGODB_URL` - Your MongoDB connection string
+- `NODE_ENV=production`
+
 📘 Documentation
 
 A short Loom walkthrough video shows:
