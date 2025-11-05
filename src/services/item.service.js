@@ -118,3 +118,21 @@ export const getItemByIdOrNameService = async (identifier) => {
     throw new AppError(`Failed to get item: ${error.message}`, 500);
   }
 };
+
+
+export const getAllItemsBasedOnCategoryId = async (categoryId) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(itemId)) {
+      throw new AppError("Invalid Item ID format", 400);
+    }
+
+    const items = await itemSchema
+      .find({ category_id:categoryId })
+
+    return items;
+  } catch (error) {
+    console.error("Failed to get items:", error);
+    logger.error("Failed to get items: " + error);
+    throw new AppError(`Failed to get items: ${error.message}`, 500);
+  }
+};
