@@ -3,7 +3,6 @@ import { getCategoryByIdOrNameService } from "../services/category.service";
 import {
   createSubCategoryService,
   getAllSubCategory,
-  getSubCategoryByIdOrNameService,
 } from "../services/sub_category.service";
 import { AppError } from "../utils/AppError";
 import { CustomTryCatch } from "../utils/CustomTryCatch";
