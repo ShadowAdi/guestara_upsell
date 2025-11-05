@@ -1,6 +1,7 @@
 import {
   CreateCategoryService,
   GetAllCategoryService,
+  getCategoryByIdOrNameService,
   updateCategoryService,
 } from "../services/category.service.js";
 import { CustomTryCatch } from "../utils/CustomTryCatch.js";
@@ -36,9 +37,9 @@ export const GetCategory = CustomTryCatch(async (req, res) => {
 
 export const UpdateCategory = CustomTryCatch(async (req, res) => {
   const { categoryId } = req.params;
-  const { data } = req.body;
+  const updateData = req.body;
 
-  const categoryUpdated = await updateCategoryService(categoryId, data);
+  const categoryUpdated = await updateCategoryService(categoryId, updateData);
 
   res.status(200).json({
     success: true,

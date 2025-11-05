@@ -34,10 +34,7 @@ export const isCategoryExistsService = async (name) => {
 
 export const GetAllCategoryService = async () => {
   try {
-    const getAllCategory = await CategorySchema.find().populate(
-      "category_id",
-      "name image"
-    );
+    const getAllCategory = await CategorySchema.find();
     return getAllCategory;
   } catch (error) {
     logger.error(`Failed to get all category: ${error}`);
@@ -73,8 +70,8 @@ export const updateCategoryService = async (categoryId, data) => {
   try {
     const updatedCategory = await CategorySchema.findByIdAndUpdate(
       categoryId,
-      data,
-      { new: true }
+      { $set: data },
+      { new: true, runValidators: true }
     );
 
     return updatedCategory;

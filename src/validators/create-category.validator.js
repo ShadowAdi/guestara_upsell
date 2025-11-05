@@ -1,4 +1,5 @@
 import { body } from "express-validator";
+import { isCategoryExistsService } from "../services/category.service.js";
 
 export function CreateCategoryValidator() {
   return [
