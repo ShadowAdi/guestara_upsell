@@ -24,8 +24,6 @@ SubCategoryRouter.get(
   GetSubCategory
 );
 
-
-
 SubCategoryRouter.get(
   "/category/:categoryId",
   GetSubCategoryBasedOnCategoryId
