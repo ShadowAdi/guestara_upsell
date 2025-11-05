@@ -1,5 +1,7 @@
 import {
   createItemService,
+  getAllItemsBasedOnCategoryId,
+  getAllItemsBasedOnSubCategoryId,
   getAllItemsService,
   getItemByIdOrNameService,
 } from "../services/item.service";
@@ -34,3 +36,29 @@ export const GetItemByNameOrId = CustomTryCatch(async (request, response) => {
     data: items,
   });
 });
+
+export const GetItemByCategoryId = CustomTryCatch(async (request, response) => {
+  const { categoryId } = req.params;
+
+  const items = await getAllItemsBasedOnCategoryId(categoryId);
+
+  res.status(200).json({
+    success: true,
+    message: "items fetched successfully",
+    data: items,
+  });
+});
+
+export const GetItemBySubCategoryId = CustomTryCatch(
+  async (request, response) => {
+    const { subCategoryId } = req.params;
+
+    const items = await getAllItemsBasedOnSubCategoryId(subCategoryId);
+
+    res.status(200).json({
+      success: true,
+      message: "items fetched successfully",
+      data: items,
+    });
+  }
+);
