@@ -1,6 +1,6 @@
 import express from "express";
 import { ValidateRequest } from "../middlewares/ValidateRequest";
-import { CreateSubCategory, GetAllSubCategory, GetSubCategory, GetSubCategoryBasedOnCategoryId } from "../controllers/sub-category.controller";
+import { CreateSubCategory, GetAllSubCategory, GetSubcategory, GetSubCategory, GetSubCategoryBasedOnCategoryId } from "../controllers/sub-category.controller";
 import { createSubCategoryValidator } from "../validators/sub-category-create.validator";
 
 
@@ -21,7 +21,7 @@ SubCategoryRouter.get(
 
 SubCategoryRouter.get(
   "/subCategory/:identifier",
-  GetSubCategory
+  GetSubcategory
 );
 
 SubCategoryRouter.get(
