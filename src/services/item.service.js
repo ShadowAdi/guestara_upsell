@@ -60,7 +60,7 @@ export const createItemService = async (data) => {
 
     const newItem = await itemSchema.create({
       category_id,
-      sub_category_id,
+      subcategory_id:sub_category_id,
       name,
       image,
       description,
@@ -77,5 +77,44 @@ export const createItemService = async (data) => {
     logger.error(`Failed to create item: ${error}`);
     console.error("Failed to create item:", error);
     throw new AppError(`Failed to create item: ${error.message}`, 500);
+  }
+};
+
+export const getAllItemsService = async () => {
+  try {
+    const getAllItems = await itemSchema
+      .find()
+      .populate("category_id")
+      .populate("subcategory_id");
+    return getAllItems;
+  } catch (error) {
+    console.error("Failed to get all items:", error);
+    logger.error("Failed to get all items " + error);
+    throw new AppError(`Failed to get all items: ${error.message}`, 500);
+  }
+};
+
+
+export const getItemByIdOrNameService = async (identifier) => {
+  try {
+    let query = {};
+
+    if (/^[0-9a-fA-F]{24}$/.test(identifier)) {
+      query = { _id: identifier };
+    } else {
+      query = { name: identifier.toLowerCase() };
+    }
+
+    const item = await itemSchema
+      .findOne(query)
+
+    if (!item) {
+      throw new AppError("Item not found", 404);
+    }
+
+    return subCategory;
+  } catch (error) {
+    console.error("Failed to get item:", error);
+    throw new AppError(`Failed to get item: ${error.message}`, 500);
   }
 };
