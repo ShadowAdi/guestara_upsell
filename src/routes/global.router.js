@@ -1,8 +1,7 @@
 import express from "express";
-import { SearchEverything } from "../controllers/search.controller.js";
+import { SearchEverything } from "../controllers/global.controller.js";
 
-const SearchRouter = express.Router();
+export const GlobalRouter = express.Router();
 
-SearchRouter.get("/", SearchEverything);
+GlobalRouter.get("/", SearchEverything);
 
-export default SearchRouter;

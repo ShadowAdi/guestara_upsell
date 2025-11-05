@@ -1,5 +1,5 @@
-import { searchEverythingService } from "../services/global.service";
-import { CustomTryCatch } from "../utils/CustomTryCatch";
+import { searchEverythingService } from "../services/global.service.js";
+import { CustomTryCatch } from "../utils/CustomTryCatch.js";
 
 export const SearchEverything = CustomTryCatch(async (req, res) => {
   const { query } = req.query;
