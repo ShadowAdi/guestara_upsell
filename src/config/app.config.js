@@ -1,6 +1,6 @@
 import { DBConnect } from "../db/db.js";
-import { PORT } from "./DotEnvConfig.js";
-import { logger } from "./loggerConfig.js";
+import { PORT } from "./Dotenv.config.js";
+import { logger } from "./logger.config.js";
 
 export const AppConnect = (app) => {
   try {

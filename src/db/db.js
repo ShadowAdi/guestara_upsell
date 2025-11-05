@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { MONGODB_URL } from "../config/Dotenv.config";
-import { logger } from "../config/logger.config";
+import { MONGODB_URL } from "../config/Dotenv.config.js";
+import { logger } from "../config/logger.config.js";
 
 export const DBConnect = async (server) => {
   if (!MONGODB_URL) {

@@ -1,14 +1,14 @@
-import { logger } from "../config/logger.config";
-import { getCategoryByIdOrNameService } from "../services/category.service";
+import { logger } from "../config/logger.config.js";
+import { getCategoryByIdOrNameService } from "../services/category.service.js";
 import {
   createSubCategoryService,
   getAllSubCategory,
   getAllSubCategoryBasedOnCategoryId,
   getSubCategoryByIdOrNameService,
   updateSubCategoryService,
-} from "../services/sub_category.service";
-import { AppError } from "../utils/AppError";
-import { CustomTryCatch } from "../utils/CustomTryCatch";
+} from "../services/sub_category.service.js";
+import { AppError } from "../utils/AppError.js";
+import { CustomTryCatch } from "../utils/CustomTryCatch.js";
 
 export const CreateSubCategory = CustomTryCatch(async (request, response) => {
   const subCategoryData = request.body;

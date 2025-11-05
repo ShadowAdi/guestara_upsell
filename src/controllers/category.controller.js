@@ -2,8 +2,8 @@ import {
   CreateCategoryService,
   GetAllCategoryService,
   updateCategoryService,
-} from "../services/category.service";
-import { CustomTryCatch } from "../utils/CustomTryCatch";
+} from "../services/category.service.js";
+import { CustomTryCatch } from "../utils/CustomTryCatch.js";
 
 export const CreateCategory = CustomTryCatch(async (request, response) => {
   const categoryData = request.body;

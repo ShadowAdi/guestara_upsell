@@ -1,6 +1,6 @@
-import { logger } from "../config/logger.config";
-import sub_categorySchema from "../models/sub_category.schema";
-import { AppError } from "../utils/AppError";
+import { logger } from "../config/logger.config.js";
+import sub_categorySchema from "../models/sub_category.schema.js";
+import { AppError } from "../utils/AppError.js";
 
 export const createSubCategoryService = async (data) => {
   try {

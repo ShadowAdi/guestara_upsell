@@ -1,6 +1,6 @@
-import { logger } from "../config/logger.config";
-import CategorySchema from "../models/Category.schema";
-import { AppError } from "../utils/AppError";
+import { logger } from "../config/logger.config.js";
+import CategorySchema from "../models/Category.schema.js";
+import { AppError } from "../utils/AppError.js";
 
 export const CreateCategoryService = async (categoryData) => {
   try {

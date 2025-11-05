@@ -1,4 +1,4 @@
-import { logger } from "../config/logger.config";
+import { logger } from "../config/logger.config.js";
 import {
   createItemService,
   getAllItemsBasedOnCategoryId,
@@ -6,9 +6,9 @@ import {
   getAllItemsService,
   getItemByIdOrNameService,
   updateItemService,
-} from "../services/item.service";
-import { AppError } from "../utils/AppError";
-import { CustomTryCatch } from "../utils/CustomTryCatch";
+} from "../services/item.service.js";
+import { AppError } from "../utils/AppError.js";
+import { CustomTryCatch } from "../utils/CustomTryCatch.js";
 
 export const CreateItem = CustomTryCatch(async (request, response) => {
   const itemData = request.body;

@@ -1,15 +1,14 @@
 import express from "express";
-import { ValidateRequest } from "../middlewares/ValidateRequest";
+import { ValidateRequest } from "../middlewares/ValidateRequest.js";
 import {
   CreateSubCategory,
   GetAllSubCategory,
   GetSubcategory,
-  GetSubCategory,
   GetSubCategoryBasedOnCategoryId,
   UpdateSubCategory,
-} from "../controllers/sub-category.controller";
-import { createSubCategoryValidator } from "../validators/sub-category-create.validator";
-import { EditSubCategoryValidator } from "../validators/edit-sub-category.validator";
+} from "../controllers/sub-category.controller.js";
+import { createSubCategoryValidator } from "../validators/sub-category-create.validator.js";
+import { EditSubCategoryValidator } from "../validators/edit-sub-category.validator.js";
 
 const SubCategoryRouter = express.Router();
 

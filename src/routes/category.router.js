@@ -4,10 +4,10 @@ import {
   GetAllCategory,
   GetCategory,
   UpdateCategory,
-} from "../controllers/category.controller";
-import { ValidateRequest } from "../middlewares/ValidateRequest";
-import { CreateCategoryValidator } from "../validators/create-category.validator";
-import { EditCategoryValidator } from "../validators/edit-category.validator";
+} from "../controllers/category.controller.js";
+import { ValidateRequest } from "../middlewares/ValidateRequest.js";
+import { CreateCategoryValidator } from "../validators/create-category.validator.js";
+import { EditCategoryValidator } from "../validators/edit-category.validator.js";
 
 const CategoryRouter = express.Router();
 

@@ -1,6 +1,6 @@
 import express from "express";
-import { CreateItemValidator } from "../validators/create-item.validator";
-import { ValidateRequest } from "../middlewares/ValidateRequest";
+import { CreateItemValidator } from "../validators/create-item.validator.js";
+import { ValidateRequest } from "../middlewares/ValidateRequest.js";
 import {
   CreateItem,
   GetAllItems,
@@ -8,8 +8,8 @@ import {
   GetItemByNameOrId,
   GetItemBySubCategoryId,
   UpdateItem,
-} from "../controllers/item.controller";
-import { EditItemValidator } from "../validators/edit-item.validator";
+} from "../controllers/item.controller.js";
+import { EditItemValidator } from "../validators/edit-item.validator.js";
 
 const ItemRouter = express.Router();
 

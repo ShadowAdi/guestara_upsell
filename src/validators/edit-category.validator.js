@@ -1,9 +1,9 @@
 import { body, param } from "express-validator";
 import { getCategoryByIdOrNameService } from "../services/category.service.js";
 import { AppError } from "../utils/AppError.js";
-import logger from "../config/logger.config.js";
+import {logger} from "../config/logger.config.js";
 
-export const EditCategoryValidator = [
+export const EditCategoryValidator = () => { return [
   param("categoryId")
     .isMongoId()
     .withMessage("Invalid category ID")
@@ -48,4 +48,4 @@ export const EditCategoryValidator = [
     .optional()
     .isIn(["percentage", "fixed"])
     .withMessage("Tax type must be either 'percentage' or 'fixed'"),
-];
+]};

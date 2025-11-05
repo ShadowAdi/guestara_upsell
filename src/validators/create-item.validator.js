@@ -1,9 +1,9 @@
 import { body } from "express-validator";
-import { getCategoryByIdOrNameService } from "../services/category.service";
-import { getSubCategoryByIdOrNameService } from "../services/sub_category.service";
-import { isItemExistsService } from "../services/item.service";
-import { logger } from "../config/logger.config";
-import { AppError } from "../utils/AppError";
+import { getCategoryByIdOrNameService } from "../services/category.service.js";
+import { getSubCategoryByIdOrNameService } from "../services/sub_category.service.js";
+import { isItemExistsService } from "../services/item.service.js";
+import { logger } from "../config/logger.config.js";
+import { AppError } from "../utils/AppError.js";
 
 export function CreateItemValidator() {
   return [
