@@ -17,7 +17,7 @@ export const CreateItem = CustomTryCatch(async (request, response) => {
   });
 });
 
-export const GetAllSubItem = CustomTryCatch(async (request, response) => {
+export const GetAllItems = CustomTryCatch(async (request, response) => {
   const allItems = await getAllItemsService();
   return response.status(200).json({
     success: true,
