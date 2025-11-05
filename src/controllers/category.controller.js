@@ -15,7 +15,7 @@ export const CreateCategory = CustomTryCatch(async (request, response) => {
   });
 });
 
-export const GetAllCategory = CustomTryCatch(async (req, res) => {
+export const GetAllCategory = CustomTryCatch(async (request, response) => {
   const getAllCategory = await GetAllCategoryService();
   return response.status(200).json({
     success: true,
