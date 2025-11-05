@@ -113,7 +113,8 @@ Working Of API
 
 Note:
 I sincerely apologize — in my Loom video, I wasn’t able to show the demo for every single API. and showcase my project structure and to explain in details,
-My university exams are ongoing and will conclude by Monday, making it slightly difficult to manage both at once.
+My university exams are ongoing and will conclude by Tuesday, making it slightly difficult to manage both at once.
+If You want I can send my loom full video and Deployment again on tuesday if that works
 However, please rest assured that I have implemented all the required functionalities in the code and verified their working locally.
 
 💭 Assignment Questions
